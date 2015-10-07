@@ -7,7 +7,7 @@
     :license: MIT, see LICENSE for more details.
 """
 
-from .entropy import randint
+from entropy import randint
 
 def egcd(a, b):
     if a == 0:
