@@ -33,6 +33,28 @@ def secret_int_to_points(secret_int, point_threshold, num_points):
     points = get_polynomial_points(coefficients, num_points, prime)
     return points
 
+def secret_int_to_points_given_prime(secret_int, point_threshold, num_points, prime):
+    """ Split a secret (integer) into shares (pair of integers / x,y coords).
+		The prime number chosen while constructing the polynomial is provided
+		as an input to the function, rather than being chosen in the function.
+		This is to ensure that the same prime is chosen for multiple shared
+		secrets, allowing us to do homomorphic computations on the secrets.
+        Sample the points of a random polynomial with the y intercept equal to
+        the secret int.
+    """
+    if point_threshold < 2:
+        raise ValueError("Threshold must be >= 2.")
+    if point_threshold > num_points:
+        raise ValueError("Threshold must be < the total number of points.")
+  
+    if not prime:
+        raise ValueError("Error! Secret is too long for share calculation!")
+    print 'Selected Prime Number = ', prime
+    coefficients = random_polynomial(point_threshold-1, secret_int, prime)
+    points = get_polynomial_points(coefficients, num_points, prime)
+    return points
+
+
 def points_to_secret_int(points):
     """ Join int points into a secret int.
 
