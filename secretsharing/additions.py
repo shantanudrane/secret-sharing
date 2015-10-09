@@ -18,7 +18,7 @@ if len(sys.argv) != 7 :
 	print '---'
 	print 'The arguments to this script are as follows: '
 	print 'Argument 1: Total number of shares that each secret will be split into (n).'
-	print 'Argument 2: Number of shares needed to reconstruct the secret (k).'
+	print 'Argument 2: Minimum number of shares needed to reconstruct the secret (k).'
 	print 'Argument 3: The first secret (any integer).'
 	print 'Argument 4: The second secret (any integer).'
 	print 'Argument 5: The first coefficient (any integer).'
